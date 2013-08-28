@@ -1,0 +1,31 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Registration Results{% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <div id="information">
+        <div class="label">Registration Result</div>
+    
+    
+    {% if result == "dupeUser" %}
+        <p>Sorry, that username is already registered, please try again.</p>
+    {% elseif result == "passwordMismatch" %}
+        <p>Sorry, the two password you've entered do not match.</p>
+    {% elseif result == "registered" %}
+        <p>
+            You have successfully registered, however your account is not activated.
+            An email was sent to the address you used when you registered with
+            details on how to activate your account. You must activate within 2
+            hours or your account will be deleted. If your account is deleted
+            you may re-register and go through the process over again.
+        </p>
+    {% else %}
+        <p>There was an error processing your request, please try again later.</p>
+    {% endif %}
+    
+    </div>
+{% endblock %}

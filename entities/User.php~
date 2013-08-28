@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @Entity
+ * @Table(name="users")
+ */
+class User {
+    
+    /**
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
+    
+    /** @Column(length=64, unique=true) */
+    private $username;
+    
+    /** @Column(length=60) */
+    private $password;
+    
+    /** @Column(length=128, unique=true) */
+    private $email;
+    
+    /** @Column(length=64) */
+    private $firstName;
+    
+    /** @Column(length=64) */
+    private $lastName;
+    
+    /** @Column(type="datetime") */
+    private $registeredOn;
+    
+    /** @Column(length=40) */
+    private $activationKey;
+    
+    /** @Column(type="boolean") */
+    private $activated;
+}

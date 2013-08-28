@@ -1,0 +1,13 @@
+{
+    "require": {
+        "doctrine/common"	        : "2.4.*@dev",
+        "doctrine/dbal"		        : "2.4.*@dev",
+        "doctrine/orm"		        : "2.4.*@dev",
+        "ircmaxell/password-compat" : "1.0.*",
+        "slim/slim"                 : "dev-master",
+        "slim/views"                : "dev-master",
+        "twig/twig"                 : "1.13.*",
+        "twig/extensions"           : "1.0.*@dev",
+        "swiftmailer/swiftmailer"   : "5.1.*@dev"
+    }
+}

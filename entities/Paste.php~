@@ -1,0 +1,49 @@
+<?php
+
+/**
+ * @Entity
+ * @Table(name="pastes")
+ */
+class Paste {
+    /**
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
+    
+    /** @Column(length=40) */
+    private $uniqueKey;
+    
+    /** @ManyToOne(targetEntity="User") */
+    private $owner;
+    
+    /**
+     * @ManyToMany(targetEntity="User")
+     * @JoinTable(
+     *     name="pastes_guests",
+     *     joinColumns={@JoinColumn(name="userId", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="pasteId", referencedColumnName="id", unique=true)}
+     * )
+     * @Column(nullable=true)
+     */
+    private $guests;
+    
+    /** @Column(length=255) */
+    private $title;
+    
+    /** @Column(type="datetime") */
+    private $postedOn;
+    
+    /** @Column(type="datetime") */
+    private $expiresOn;
+    
+    /** @Column(length=128) */
+    private $language;
+    
+    /** @Column(type="integer",length=1) */
+    private $visibility;
+    
+    /** @Column(type="text") */
+    private $contents;
+}
