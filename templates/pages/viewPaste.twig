@@ -1,0 +1,41 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Viewing {{ paste.title }} by {{ paste.owner.username }} ({{ getPrettyLanguageName(paste.language) }}){% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    <script src="/javascript/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascript/editor.js" type="text/javascript" charset="utf-8"></script>
+{% endblock %}
+
+{% block content %}
+    <div id="information">
+        
+        <div id="paste-title">
+            <span>{{ paste.title }}</span>
+        </div>
+        
+        <div id="paste-author">
+            <span class="label">Author</span>
+            <span class="value">{{ paste.owner.username }}</span>
+        </div>
+        
+        <div id="paste-language">
+            <span class="label">Language</span>
+            <span class="value" id="language" lang="{{ paste.language }}">{{ getPrettyLanguageName(paste.language) }}</span>
+        </div>
+        
+        <div id="paste-createdOn">
+            <span class="label">Created</span>
+            <span class="value">{{ paste.createdOn|date("m/d/Y H:i:s") }}</span>
+        </div>
+        
+        <div id="paste-expiresOn">
+            <span class="label">Expires</span>
+            <span class="value">{{ paste.expiresOn|date("m/d/Y H:i:s") }}</span>
+        </div>
+    </div>
+
+    <div id="editor">{{ paste.contents }}</div>
+{% endblock %}

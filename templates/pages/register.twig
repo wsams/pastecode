@@ -1,0 +1,76 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Register new account{% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <div id="information">
+            <div>
+                <span>
+                    <label for="username">Username</label>
+                </span>
+                <span>
+                    <input type="text" id="username" name="username" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="password">Password</label>
+                </span>
+                <span>
+                    <input type="password" id="password" name="password" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="password2">(again)</label>
+                </span>
+                <span>
+                    <input type="password" id="password2" name="password2" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="email">Email Address</label>
+                </span>
+                <span>
+                    <input type="email" id="email" name="email" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="firstName">First Name</label>
+                </span>
+                <span>
+                    <input type="text" id="firstName" name="firstName" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="lastName">Last Name</label>
+                </span>
+                <span>
+                    <input type="text" id="lastName" name="lastName" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <input type="submit" value="Register" />
+                </span>
+                <span>
+                    &nbsp;
+                </span>
+            </div>
+        </div>
+    </form>
+{% endblock %}

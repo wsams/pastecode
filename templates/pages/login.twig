@@ -1,0 +1,45 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Log In{% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    
+    {% if message != null %}
+        <p>{{ message }}</p>
+    {% endif %}
+    
+    <form method="post">
+        <div id="information">
+            <div>
+                <span>
+                    <label for="username">Username</label>
+                </span>
+                <span>
+                    <input type="text" id="username" name="username" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="password">Password</label>
+                </span>
+                <span>
+                    <input type="password" id="password" name="password" />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <input type="submit" value="Log In" />
+                </span>
+                <span>
+                    &nbsp;
+                </span>
+            </div>
+        </div>
+    </form>
+{% endblock %}

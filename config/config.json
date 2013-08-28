@@ -1,0 +1,21 @@
+{
+    "database": {
+        "driver"    : "pdo_mysql",
+        "user"      : "pastecode",
+        "password"  : "pastecode",
+        "dbname"    : "pastecode",
+        "host"      : "localhost"
+    },
+    "server": {
+        "url"       : "http://ubu1204.avitacco.com",
+        "timezone"  : "America/Indiana/Indianapolis"
+    },
+    "application": {
+        "mode"      : "prod",
+        "debug"     : false
+    },
+    "interface": {
+        "output"    : "html5",
+        "layout"    : "basic"
+    }
+}

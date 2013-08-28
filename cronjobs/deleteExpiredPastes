@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+// Include the composer autoloader
+require(__DIR__ . "/../vendor/autoload.php");
+
+// Require the libraries we need to make our doctrine stuff go
+require(__DIR__ . "/../bootstrap.php");
+require(__DIR__ . "/../entities/Paste.php");
+require(__DIR__ . "/../entities/User.php");
+
+// Set up whatever "now" is
+$now = new DateTime("now", new DateTimeZone("America/Indiana/Indianapolis"));
+
+// Run the delete
+$query = $entityManager->createQuery("delete Paste p where p.expiresOn < CURRENT_TIMESTAMP()");
+$query->getResult();

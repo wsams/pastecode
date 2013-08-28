@@ -1,0 +1,41 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Activate your account{% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <div id="information">
+            <div>
+                <span>
+                    <label for="email">Email</label>
+                </span>
+                <span>
+                    <input type="email" id="email" name="email" {% if get.email != null %}value="{{get.email}}"{%endif%} />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <label for="key">Activation Code</label>
+                </span>
+                <span>
+                    <input type="text" id="key" name="key" {% if get.key != null %}value="{{get.key}}"{%endif%} />
+                </span>
+            </div>
+            
+            <div>
+                <span>
+                    <input type="submit" value="Activate" />
+                </span>
+                <span>
+                    &nbsp;
+                </span>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}
