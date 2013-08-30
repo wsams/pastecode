@@ -1,0 +1,11 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block contents%}
+        <div class="section-title">Database Config</div>
+        {% for field, fieldDetails in getDriverConfigFields(driver) %}
+            <div class="subsection">
+                <span><label for="{{field}}">{{fieldDetails.label}}</label></span>
+                <span><input type="{{fieldDetails.type}}" id="{{field}}" name="{{field}}" /></span>
+            </div>
+        {% endfor %}
+{% endblock %}

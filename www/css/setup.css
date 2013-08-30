@@ -1,0 +1,43 @@
+.page-title {
+	color: #FFB751;
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+.section {
+	display: table;
+	margin-top: 20px;
+	margin-bottom: 12px;
+}
+
+.section-title {
+	color: #9591FC;
+	display: table-caption;
+	border-bottom: 1px solid #BF893D;
+	max-width: 7.5in;
+	min-width: 4.5in;
+	margin-bottom: 6px;
+	font-weight: bold;
+}
+
+.subsection {
+	display: table-row;
+}
+
+.subsection > span:first-child {
+	padding-left: 12px;
+}
+
+.subsection > span {
+	display: table-cell;
+	color: #DBDBDB;
+	padding: 3px;
+}
+
+.positive {
+	color: #07A268 !important;
+}
+
+.negative {
+	color: #FF9F18 !important;
+}

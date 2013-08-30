@@ -1,0 +1,90 @@
+{% extends "/layouts/" ~ layout ~ ".twig" %}
+
+{% block title %}..::Pastecode::.. Setup Page 1{% endblock %}
+
+{% block head_bottom %}
+    <link rel="stylesheet" href="/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="/css/setup.css" type="text/css" />
+    <script src="/javascript/jquery.min.js" type="text/javascript"></script>
+    <script src="/javascript/setup.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="page-title">Pastecode Setup</div>
+    
+    <div class="section">
+        <div class="section-title">File System Permissions</div>
+        <div class="section-contents">
+            <div class="subsection">
+                <span>Allowed to delete setup script?</span>
+                {% if canDeleteSetupPage() %}
+                    <span class="positive">Yes</span>
+                {% else %}
+                    <span class="negative">No</span>
+                {% endif %}
+            </div>
+            <div class="subsection">
+                <span>Allowed to write config file?</span>
+                {% if canWriteConfig() %}
+                    <span class="positive">Yes</span>
+                {% else %}
+                    <span class="negative">No</span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Server Information</div>
+        <div class="section-contents">
+            <div class="subsection">
+                <span><label for="url">URL</label></span>
+                <span><input type="url" id="url" name="url" required="required" value="{{ getURL() }}" /></span>
+            </div>
+            <div class="subsection">
+                <span><label for="timezone">Default Timezone</label></span>
+                <span>
+                    <select id="timezone" name="timezone">
+                        {% for timezone in getTimeZones() %}
+                            <option>{{ timezone }}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Email Information</div>
+        <div class="section-contents">
+            <div class="subsection">
+                <span><label for="email_address">From Email Address</label></span>
+                <span><input type="email" name="email_address" id="email_address" required="required" placeholder="pastecode@domain.com" /></span>
+            </div>
+            <div class="subsection">
+                <span><label for="email_from">From Name</label></span>
+                <span><input type="text" name="email_from" id="email_from" required="required" placeholder="Pastecode"/></span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <div class="section-title">Database Driver Selection</div>
+        <div class="section_contents">
+            <div class="subsection">
+                <span><label for="driver">Database Driver</label></span>
+                <span>
+                    <select name="driver" id="driver" required="required">
+                        <option disabled="disabled" selected="selected">Select a driver</option>
+                        {% for value,label in getDatabaseDrivers() %}
+                            <option value="{{value}}">{{label}}</option>
+                        {% endfor %}
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section" id="driverConfig"></div>
+    
+{% endblock %}
