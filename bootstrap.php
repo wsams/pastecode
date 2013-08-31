@@ -26,14 +26,5 @@ foreach ($config->database as $key => $value) {
     }
 }
 
-/*
-$dbParams = array(
-    "driver"    => $config->database->driver,
-    "user"      => $config->database->user,
-    "password"  => $config->database->password,
-    "dbname"    => $config->database->dbname,
-    "host"	=> $config->database->host
-);
-*/
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);
