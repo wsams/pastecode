@@ -44,4 +44,44 @@ $app->get(
     }
 );
 
+$app->post(
+    "/",
+    function () use ($app, $options) {
+        $post = $app->request()->params();
+        $config = array(
+            "server" => array(
+                "url" => $post["url"],
+                "timezone" => $post["timezone"]
+            ),
+            "email" => array(
+                "name" => $post["email_from"],
+                "address" => $post["email_address"]
+            ),
+            "application" => array(
+                "mode" => "prod",
+                "debug" => false
+            ),
+            "interface" => array(
+                "output" => "html5",
+                "layout" => "basic"
+            )
+        );
+        
+        if ($post["driver"] == "pdo_sqlite") {
+            $driverParams = array("driver","user","password","path");
+        } else {
+            $driverParams = array("driver","user","password","host","port","dbname");
+        }
+        
+        foreach ($driverParams as $param) {
+            if (isset($post[$param])) {
+                $config["database"][$param] = $post[$param];
+            }
+        }
+        $config = json_encode($config);
+        file_put_contents(__DIR__ . "/../config/config.js", stripslashes($config));
+        
+    }
+);
+
 $app->run();
