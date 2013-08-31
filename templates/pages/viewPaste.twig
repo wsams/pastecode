@@ -3,10 +3,10 @@
 {% block title %}..::Pastecode::.. Viewing {{ paste.title }} by {{ paste.owner.username }} ({{ getPrettyLanguageName(paste.language) }}){% endblock %}
 
 {% block head_bottom %}
-    <link rel="stylesheet" href="/css/main.css" type="text/css" />
-    <script src="/javascript/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascript/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/javascript/editor.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{siteRoot}}/css/main.css" type="text/css" />
+    <script src="{{siteRoot}}/javascript/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{siteRoot}}/javascript/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{siteRoot}}/javascript/editor.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 {% block content %}
