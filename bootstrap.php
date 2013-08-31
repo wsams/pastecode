@@ -9,18 +9,15 @@ if (!isset($config)) {
     $config = new Config(__DIR__ . "/config/config.json");
 }
 
-
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 $paths = array(__DIR__ . "/entities");
-$isDevMode = true;
-
-echo "<pre>";
+$isDevMode = $config->application->debug;
 
 $dbParams = array();
 foreach ($config->database as $key => $value) {
-    //var_dump($key, $value);
+    
     if ($value != "") {
         $dbParams[$key] = $value;
     }
