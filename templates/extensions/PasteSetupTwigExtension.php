@@ -109,7 +109,7 @@ class PasteSetupTwigExtension extends Twig_Extension
         $fields = array(
             "user" => array("label" => "Username", "type" => "text"),
             "password" => array("label" => "Password", "type" => "password"),
-            "host" => array("label" => "Server", "type" => "url"),
+            "host" => array("label" => "Server", "type" => "text"),
             "port" => array("label" => "Port", "type" => "number"),
             "dbname" => array("label" => "Database", "type" => "text")
         );
