@@ -10,9 +10,13 @@
         "url"       : "http://ubu1204.avitacco.com",
         "timezone"  : "America/Indiana/Indianapolis"
     },
+    "email": {
+        "address"   : "",
+        "name"      : ""
+    },
     "application": {
-        "mode"      : "prod",
-        "debug"     : false
+        "mode"      : "dev",
+        "debug"     : true
     },
     "interface": {
         "output"    : "html5",

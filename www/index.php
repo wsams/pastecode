@@ -14,7 +14,8 @@ use \Slim\Views\Twig as Twig;
 // Define some options relating to our template
 $options = array(
     "output" => $config->interface->output,
-    "layout" => $config->interface->layout
+    "layout" => $config->interface->layout,
+    "siteRoot" => $config->server->url
 );
 
 // Instantiate everything we need for the application
@@ -23,7 +24,7 @@ $twigView->twigTemplateDirs = __DIR__ . "/../templates";
 
 require(__DIR__ . "/../templates/extensions/PasteTwigExtension.php");
 
-$twigView->parserExtensions = array(new Twig_Extension_Debug, new PasteTwigExtension());
+$twigView->parserExtensions = array(new PasteTwigExtension());
 $app = new Slim(array("view" => $twigView,"mode" => $config->application->mode,"debug" => $config->application->debug));
 
 // Is the user logged in?
@@ -94,7 +95,7 @@ $app->post(
                 $transport = Swift_MailTransport::newInstance();
                 $message = Swift_Message::newInstance()
                     ->setSubject("Pastecode - New account activation information")
-                    ->setFrom(array("Pastecode@ubu1204.avitacco.com" => "Pastecode"))
+                    ->setFrom(array($config->email->address => $config->email->name))
                     ->setTo(array($post["email"]))
                     ->setBody("Your activation code is {$user->getActivationKey()}.
                               Go to the page below to activate your account.
