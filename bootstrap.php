@@ -23,5 +23,5 @@ foreach ($config->database as $key => $value) {
     }
 }
 
-$config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
-$entityManager = EntityManager::create($dbParams, $config);
+$dbConfig = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+$entityManager = EntityManager::create($dbParams, $dbConfig);

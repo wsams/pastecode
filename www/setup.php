@@ -80,7 +80,37 @@ $app->post(
         }
         $config = json_encode($config);
         file_put_contents(__DIR__ . "/../config/config.json", stripslashes($config));
-        //unlink(__FILE__);
+        
+        // Create the database
+        unset($config);
+        require(__DIR__ . "/../entities/Paste.php");
+        require(__DIR__ . "/../entities/User.php");
+        require(__DIR__ . "/../bootstrap.php");
+        $tool = new \Doctrine\ORM\Tools\SchemaTool($entityManager);
+        $classes = array(
+            $entityManager->getClassMetadata('User'),
+            $entityManager->getClassMetadata('Paste')
+        );
+        $tool->createSchema($classes);
+        
+        // Create the anonymous user
+        $user = new User();
+        $user->setUsername("Anonymous");
+        $user->setPassword(password_hash(mt_rand(10000,99999).time(), PASSWORD_BCRYPT));
+        $user->setEmail("anonymous@nowhere.org");
+        $user->setFirstName("Anonymous");
+        $user->setLastName("User");
+        $user->setRegisteredOn(new DateTime("now", new DateTimeZone($config->server->timezone)));
+        $user->setActivationKey(sha1(mt_rand(10000,99999).time()."noactivate"));
+        $user->setActivated(true);
+        $entityManager->persist($user);
+        $entityManager->flush();
+        
+        // Delete the setup file
+        unlink(__FILE__);
+        
+        // Redirect to the index page
+        $app->redirect("/");
     }
 );
 
