@@ -16,6 +16,17 @@ use Doctrine\ORM\EntityManager;
 $paths = array(__DIR__ . "/entities");
 $isDevMode = true;
 
+echo "<pre>";
+
+$dbParams = array();
+foreach ($config->database as $key => $value) {
+    //var_dump($key, $value);
+    if ($value != "") {
+        $dbParams[$key] = $value;
+    }
+}
+
+/*
 $dbParams = array(
     "driver"    => $config->database->driver,
     "user"      => $config->database->user,
@@ -23,6 +34,6 @@ $dbParams = array(
     "dbname"    => $config->database->dbname,
     "host"	=> $config->database->host
 );
-
+*/
 $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 $entityManager = EntityManager::create($dbParams, $config);
