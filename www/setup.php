@@ -79,8 +79,8 @@ $app->post(
             }
         }
         $config = json_encode($config);
-        file_put_contents(__DIR__ . "/../config/config.js", stripslashes($config));
-        
+        file_put_contents(__DIR__ . "/../config/config.json", stripslashes($config));
+        //unlink(__FILE__);
     }
 );
 
